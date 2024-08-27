@@ -1,3 +1,7 @@
+# Iñigo Quintana Delgadillo
+# Naomi Díaz Hurtado
+# 27/08/2024
+
 class Nodo:
     def __init__(self, valor):
         self.valor = valor
