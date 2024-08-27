@@ -3,16 +3,16 @@
 # 27/08/2024
 
 class Nodo:
-    def __init__(self, valor):
-        self.valor = valor
-        self.vecinos = []
+     def __init__(self, valor):
+          self.valor = valor
+          self.vecinos = []
 
-    def agregar_vecino(self, vecino):
-        if vecino not in self.vecinos:
-            self.vecinos.append(vecino)
+     def agregar_vecino(self, vecino):
+          if vecino not in self.vecinos:
+               self.vecinos.append(vecino)
 
-    def __str__(self):
-        return f"Nodo({self.valor}): Vecinos -> {[vecino.valor for vecino in self.vecinos]}"
+     def __str__(self):
+          return f"Nodo({self.valor}): Vecinos -> {[vecino.valor for vecino in self.vecinos]}"
 
 
 class Grafo:
