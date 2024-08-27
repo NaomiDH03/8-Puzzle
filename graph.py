@@ -25,25 +25,24 @@ class Grafo:
                self.nodos[valor1].agregar_vecino(self.nodos[valor2])
                self.nodos[valor2].agregar_vecino(self.nodos[valor1])  # Si es un grafo no dirigido
 
-     def construir_matriz(self, filas, columnas):
-          for i in range(filas):
-               fila = []
-               for j in range(columnas):
-                    valor = i * columnas + j  # Valor único para cada nodo
+     def construir_matriz(self, matriz):
+          self.matriz = matriz
+          for i in range(3):
+               for j in range(3):
+                    valor = matriz[i][j]
                     self.agregar_nodo(valor)
-                    fila.append(valor)
-               self.matriz.append(fila)
+          print("Matriz de nodos:", self.matriz)
                
 
-          for i in range(filas):
-               for j in range(columnas):
+          for i in range(3):
+               for j in range(3):
                     nodo_actual = self.matriz[i][j]
                     # Conectar con el nodo de arriba
                     if i > 0:
                          nodo_arriba = self.matriz[i-1][j]
                          self.agregar_arista(nodo_actual, nodo_arriba)
                     # Conectar con el nodo de abajo
-                    if i < filas - 1:
+                    if i < 3 - 1:
                          nodo_abajo = self.matriz[i+1][j]
                          self.agregar_arista(nodo_actual, nodo_abajo)
                     # Conectar con el nodo de la izquierda
@@ -51,7 +50,7 @@ class Grafo:
                          nodo_izquierda = self.matriz[i][j-1]
                          self.agregar_arista(nodo_actual, nodo_izquierda)
                     # Conectar con el nodo de la derecha
-                    if j < columnas - 1:
+                    if j < 3 - 1:
                          nodo_derecha = self.matriz[i][j+1]
                          self.agregar_arista(nodo_actual, nodo_derecha)
 
@@ -69,7 +68,12 @@ class Grafo:
 
 # Ejemplo de uso
 mi_grafo = Grafo()
-mi_grafo.construir_matriz(3, 3)  # Construir una matriz de 3x3
+
+matriz = [[2, 8, 3], 
+          [1, 6, 4], 
+          [7, 0, 5]]
+
+mi_grafo.construir_matriz(matriz)  # Construir una matriz de 3x3
 
 print("Nodos en el grafo:", mi_grafo.obtener_nodos())
 print("Vecinos del nodo 4:", mi_grafo.obtener_vecinos(4))  # Nodo central en una matriz 3x3
